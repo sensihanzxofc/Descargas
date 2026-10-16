@@ -1,1 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050709">
+<title>HANZX TEAM • Centro de Descargas</title>
 
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #050709;
+  color: #fff;
+  min-height: 100vh;
+  padding: 25px 15px;
+  background-image:
+    linear-gradient(#10182055 1px, transparent 1px),
+    linear-gradient(90deg, #10182055 1px, transparent 1px);
+  background-size: 25px 25px;
+}
+
+.container {
+  width: 100%;
+  max-width: 450px;
+  margin: 25px auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  color: #00e5ff;
+}
+
+.subtitle {
+  color: #7c8995;
+  font-size: 11px;
+  margin-top: 9px;
+  letter-spacing: 3px;
+}
+
+.card {
+  background: #0b1016;
+  border: 1px solid #1c303b;
+  border-radius: 15px;
+  padding: 21px;
+  margin-bottom: 18px;
+  box-shadow: 0 0 25px #00d9ff0c;
+}
+
+.tag {
+  display: inline-block;
+  color: #00e5ff;
+  background: #00e5ff12;
+  border: 1px solid #00e5ff44;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 17px;
+}
+
+.file-title {
+  font-size: 22px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+  margin-bottom: 20px;
+}
+
+.info {
+  background: #070b10;
+  border: 1px solid #18232d;
+  border-radius: 9px;
+  padding: 13px;
+  margin-bottom: 11px;
+}
+
+.label {
+  color: #7e909d;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  margin-bottom: 7px;
+}
+
+.value {
+  font-size: 14px;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+
+.key {
+  color: #00e5ff;
+  letter-spacing: 1px;
+}
+
+.download {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 17px;
+  padding: 15px;
+  border-radius: 9px;
+  background: #00d9ff;
+  color: #001014;
+  font-size: 12px;
+  font-weight: 900;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: .2s;
+}
+
+.download:hover {
+  background: #fff;
+  box-shadow: 0 0 20px #00d9ff55;
+  transform: translateY(-2px);
+}
+
+.footer {
+  text-align: center;
+  color: #52616c;
+  font-size: 10px;
+  margin-top: 25px;
+  letter-spacing: 2px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <header class="header">
+    <div class="logo">HANZX <span>TEAM</span></div>
+    <div class="subtitle">CENTRO DE DESCARGAS</div>
+  </header>
+
+  <main id="downloads"></main>
+
+  <footer class="footer">
+    HANZX TEAM © 2026
+  </footer>
+
+</div>
+
+<script>
+// AGREGA O EDITA LOS ARCHIVOS EN ESTA LISTA
+
+const archivos = [
+  {
+    nombre: "PROXY HANZX TEAM",
+    fecha: "16/10/2026",
+    key: "PLAYPING",
+    enlace: "https://TU-ENLACE-DE-DESCARGA.com/archivo.apk"
+  },
+  {
+    nombre: "PROXY VIP V2",
+    fecha: "17/10/2026",
+    key: "NETWORD",
+    enlace: "https://TU-ENLACE-DE-DESCARGA.com/archivo2.apk"
+  },
+  {
+    nombre: "PROXY UPDATE",
+    fecha: "18/10/2026",
+    key: "HANZX-TEAM",
+    enlace: "https://TU-ENLACE-DE-DESCARGA.com/archivo3.apk"
+  }
+];
+
+const contenedor = document.getElementById("downloads");
+
+archivos.forEach(archivo => {
+  const tarjeta = document.createElement("section");
+  tarjeta.className = "card";
+
+  const etiqueta = document.createElement("div");
+  etiqueta.className = "tag";
+  etiqueta.textContent = "● ARCHIVO DISPONIBLE";
+
+  const titulo = document.createElement("h1");
+  titulo.className = "file-title";
+  titulo.textContent = archivo.nombre;
+
+  function crearInfo(nombre, valor, clase = "value") {
+    const info = document.createElement("div");
+    info.className = "info";
+
+    const etiqueta = document.createElement("div");
+    etiqueta.className = "label";
+    etiqueta.textContent = nombre;
+
+    const texto = document.createElement("div");
+    texto.className = clase;
+    texto.textContent = valor;
+
+    info.append(etiqueta, texto);
+    return info;
+  }
+
+  const boton = document.createElement("a");
+  boton.className = "download";
+  boton.textContent = "↓ DESCARGAR ARCHIVO";
+  boton.href = archivo.enlace;
+  boton.target = "_blank";
+  boton.rel = "noopener noreferrer";
+
+  tarjeta.append(
+    etiqueta,
+    titulo,
+    crearInfo("FECHA DE SUBIDA:", archivo.fecha),
+    crearInfo("KEY DE ACCESO:", archivo.key, "value key"),
+    boton
+  );
+
+  contenedor.appendChild(tarjeta);
+});
+</script>
+
+</body>
+</html>
