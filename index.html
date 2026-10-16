@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -110,6 +111,7 @@ body {
 .key {
   color: #00e5ff;
   letter-spacing: 1px;
+  overflow-wrap: anywhere;
 }
 
 .download {
@@ -132,6 +134,18 @@ body {
   background: #fff;
   box-shadow: 0 0 20px #00d9ff55;
   transform: translateY(-2px);
+}
+
+.get-key {
+  background: #101820;
+  color: #00e5ff;
+  border: 1px solid #00e5ff66;
+  margin-top: 10px;
+}
+
+.get-key:hover {
+  background: #00e5ff;
+  color: #001014;
 }
 
 .footer {
@@ -161,26 +175,29 @@ body {
 </div>
 
 <script>
-// AGREGA O EDITA LOS ARCHIVOS EN ESTA LISTA
+// AGREGA O EDITA TUS ARCHIVOS AQUÍ
 
 const archivos = [
   {
     nombre: "PROXY MTH TEAM",
     fecha: "16/10/2026",
-    key: "https://mthteam.com/getkey",
-    enlace: "https://www.mediafire.com/file/rc7s5z7j3upo9ty/Nexa-Play-v30.0vexjuego.apk/file"
+    key: "Genera tu key free",
+    enlace: "https://www.mediafire.com/file/rc7s5z7j3upo9ty/Nexa-Play-v30.0vexjuego.apk/file",
+    enlaceKey: "https://mthteam.com/getkey"
   },
   {
     nombre: "PROXY VIP V2",
     fecha: "17/10/2026",
     key: "NETWORD",
-    enlace: "https://TU-ENLACE-DE-DESCARGA.com/archivo2.apk"
+    enlace: "https://TU-ENLACE-DE-DESCARGA.com/archivo2.apk",
+    enlaceKey: ""
   },
   {
     nombre: "PROXY UPDATE",
     fecha: "18/10/2026",
     key: "HANZX-TEAM",
-    enlace: "https://TU-ENLACE-DE-DESCARGA.com/archivo3.apk"
+    enlace: "https://TU-ENLACE-DE-DESCARGA.com/archivo3.apk",
+    enlaceKey: ""
   }
 ];
 
@@ -202,32 +219,43 @@ archivos.forEach(archivo => {
     const info = document.createElement("div");
     info.className = "info";
 
-    const etiqueta = document.createElement("div");
-    etiqueta.className = "label";
-    etiqueta.textContent = nombre;
+    const textoEtiqueta = document.createElement("div");
+    textoEtiqueta.className = "label";
+    textoEtiqueta.textContent = nombre;
 
     const texto = document.createElement("div");
     texto.className = clase;
     texto.textContent = valor;
 
-    info.append(etiqueta, texto);
+    info.append(textoEtiqueta, texto);
     return info;
   }
 
-  const boton = document.createElement("a");
-  boton.className = "download";
-  boton.textContent = "↓ DESCARGAR ARCHIVO";
-  boton.href = archivo.enlace;
-  boton.target = "_blank";
-  boton.rel = "noopener noreferrer";
+  const botonDescarga = document.createElement("a");
+  botonDescarga.className = "download";
+  botonDescarga.textContent = "↓ BOTÓN DE DESCARGA";
+  botonDescarga.href = archivo.enlace;
+  botonDescarga.target = "_blank";
+  botonDescarga.rel = "noopener noreferrer";
 
   tarjeta.append(
     etiqueta,
     titulo,
-    crearInfo("FECHA DE SUBIDA:", archivo.fecha),
+    crearInfo("FECHA:", archivo.fecha),
     crearInfo("KEY DE ACCESO:", archivo.key, "value key"),
-    boton
+    botonDescarga
   );
+
+  if (archivo.enlaceKey) {
+    const botonKey = document.createElement("a");
+    botonKey.className = "download get-key";
+    botonKey.textContent = "🔑 GET KEY FREE";
+    botonKey.href = archivo.enlaceKey;
+    botonKey.target = "_blank";
+    botonKey.rel = "noopener noreferrer";
+
+    tarjeta.appendChild(botonKey);
+  }
 
   contenedor.appendChild(tarjeta);
 });
