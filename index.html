@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,255 +8,404 @@
 
 <style>
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
 }
 
 :root {
-  color-scheme: dark;
+    color-scheme: dark;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: #050709;
-  color: #fff;
-  min-height: 100vh;
-  padding: 25px 15px;
-  background-image:
-    linear-gradient(#10182055 1px, transparent 1px),
-    linear-gradient(90deg, #10182055 1px, transparent 1px);
-  background-size: 25px 25px;
+    margin: 0;
+    min-height: 100vh;
+    padding: 25px 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    background-color: #050709;
+    background-image:
+        linear-gradient(rgba(0, 255, 255, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, .035) 1px, transparent 1px);
+    background-size: 25px 25px;
 }
 
-.container {
-  width: 100%;
-  max-width: 450px;
-  margin: 25px auto;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 28px;
+header {
+    max-width: 650px;
+    margin: 0 auto 30px;
+    text-align: center;
 }
 
 .logo {
-  font-size: 30px;
-  font-weight: 900;
-  letter-spacing: 2px;
-}
-
-.logo span {
-  color: #00e5ff;
+    color: #00f7ff;
+    font-size: clamp(28px, 7vw, 42px);
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-shadow: 0 0 18px rgba(0, 247, 255, .45);
 }
 
 .subtitle {
-  color: #7c8995;
-  font-size: 11px;
-  margin-top: 9px;
-  letter-spacing: 3px;
+    margin-top: 9px;
+    color: #aab8c2;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.line {
+    width: 100px;
+    height: 3px;
+    margin: 18px auto 0;
+    border-radius: 10px;
+    background: #00f7ff;
+    box-shadow: 0 0 12px #00f7ff;
+}
+
+#lista {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    max-width: 650px;
+    margin: auto;
 }
 
 .card {
-  background: #0b1016;
-  border: 1px solid #1c303b;
-  border-radius: 15px;
-  padding: 21px;
-  margin-bottom: 18px;
-  box-shadow: 0 0 25px #00d9ff0c;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    border: 1px solid rgba(0, 247, 255, .35);
+    border-radius: 15px;
+    background: rgba(8, 14, 19, .96);
+    box-shadow: 0 0 18px rgba(0, 247, 255, .06);
 }
 
-.tag {
-  display: inline-block;
-  color: #00e5ff;
-  background: #00e5ff12;
-  border: 1px solid #00e5ff44;
-  padding: 6px 10px;
-  border-radius: 5px;
-  font-size: 10px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-bottom: 17px;
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #00f7ff, transparent);
 }
 
-.file-title {
-  font-size: 22px;
-  font-weight: 800;
-  overflow-wrap: anywhere;
-  margin-bottom: 20px;
+.estado {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: #00f7a5;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
 }
 
-.info {
-  background: #070b10;
-  border: 1px solid #18232d;
-  border-radius: 9px;
-  padding: 13px;
-  margin-bottom: 11px;
+.titulo {
+    margin: 0 0 18px;
+    overflow-wrap: anywhere;
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 900;
 }
 
-.label {
-  color: #7e909d;
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  margin-bottom: 7px;
+.dato {
+    margin: 12px 0;
+    padding: 11px;
+    border: 1px solid #202d35;
+    border-radius: 8px;
+    background: #0c1217;
 }
 
-.value {
-  font-size: 14px;
-  font-weight: bold;
-  overflow-wrap: anywhere;
+.etiqueta {
+    display: block;
+    margin-bottom: 7px;
+    color: #00f7ff;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.3px;
 }
 
-.key {
-  color: #00e5ff;
-  letter-spacing: 1px;
-  overflow-wrap: anywhere;
+.valor {
+    color: #dce6eb;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
 }
 
-.download {
-  display: block;
-  width: 100%;
-  text-align: center;
-  margin-top: 17px;
-  padding: 15px;
-  border-radius: 9px;
-  background: #00d9ff;
-  color: #001014;
-  font-size: 12px;
-  font-weight: 900;
-  text-decoration: none;
-  letter-spacing: 1px;
-  transition: .2s;
+.key-fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-.download:hover {
-  background: #fff;
-  box-shadow: 0 0 20px #00d9ff55;
-  transform: translateY(-2px);
+.key-texto {
+    flex: 1;
+    min-width: 100px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
 }
 
-.get-key {
-  background: #101820;
-  color: #00e5ff;
-  border: 1px solid #00e5ff66;
-  margin-top: 10px;
+.botones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
 }
 
-.get-key:hover {
-  background: #00e5ff;
-  color: #001014;
+.boton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 45px;
+    padding: 12px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .2s;
 }
 
-.footer {
-  text-align: center;
-  color: #52616c;
-  font-size: 10px;
-  margin-top: 25px;
-  letter-spacing: 2px;
+.boton:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.15);
+}
+
+.descargar {
+    color: #001014;
+    background: #00f7ff;
+    box-shadow: 0 0 12px rgba(0, 247, 255, .18);
+}
+
+.getkey {
+    border-color: #00f7ff;
+    color: #00f7ff;
+    background: #081318;
+}
+
+.copy {
+    width: auto;
+    min-height: 34px;
+    padding: 9px 12px;
+    color: #001b0c;
+    background: #00f58a;
+    font-size: 10px;
+    letter-spacing: .5px;
+}
+
+.aviso {
+    color: #ffcf70;
+}
+
+footer {
+    max-width: 650px;
+    margin: 30px auto 0;
+    color: #64747e;
+    font-size: 10px;
+    text-align: center;
+    letter-spacing: 1.5px;
 }
 </style>
 </head>
 
 <body>
-<div class="container">
 
-  <header class="header">
-    <div class="logo">SENSI <span>HANZX</span></div>
+<header>
+    <div class="logo">HANZX TEAM</div>
     <div class="subtitle">CENTRO DE DESCARGAS</div>
-  </header>
+    <div class="line"></div>
+</header>
 
-  <main id="downloads"></main>
+<main id="lista"></main>
 
-  <footer class="footer">
-    HANZX TEAM © 2026
-  </footer>
-
-</div>
+<footer>
+    HANZX TEAM • CENTRO OFICIAL DE DESCARGAS
+</footer>
 
 <script>
-// AGREGA O EDITA TUS ARCHIVOS AQUÍ
-
 const archivos = [
-  {
-    nombre: "PROXY MTH TEAM",
-    fecha: "16/10/2026",
-    key: "Genera tu key free",
-    enlace: "https://www.mediafire.com/file/rc7s5z7j3upo9ty/Nexa-Play-v30.0vexjuego.apk/file",
-    enlaceKey: "https://mthteam.com/getkey"
-  },
-  {
-    nombre: "CUBAN MODS APK",
-    fecha: "16/10/2026",
-    key: "CUBAN-79F144796D22B552",
-    enlace: "https://www.mediafire.com/file/djdsxn2zslfwdqc/Cuban-Mods-15.0.149-tele.apks/file",
-    enlaceKey: "https://cubanmods.com/keygratis"
-  },
-  {
-    nombre: "HOLOGRAMA GRATIS",
-    fecha: "16/10/2026",
-    key: "KRISSGAMERV1",
-    enlace: "https://www.mediafire.com/file/yc6njnaqg57pw5g/HOLO_VIP_FF_NORMAL_DE_PLAY_STORE_100%2525_SEGURO_%25F0%259F%2592%25BC%25F0%259F%25A4%258D.zip/file",
-    enlaceKey: ""
-  }
+
+    {
+        titulo: "PROXY MTH TEAM",
+        aviso: "Usa esta aplicación bajo tu responsabilidad.",
+        dispositivo: "ANDROID",
+        fecha: "16/10/2026",
+        key: "Genera tu key free",
+
+        enlaceDescarga: "https://www.mediafire.com/file/rc7s5z7j3upo9ty/Nexa-Play-v30.0vexjuego.apk/file",
+
+        // Pon un enlace para mostrar GET KEY FREE.
+        // Déjalo como "" para ocultarlo.
+        enlaceKey: "https://mthteam.com/getkey",
+
+        // Pon la key para mostrar COPY.
+        // Déjalo como "" para ocultarlo.
+        enlaceCopy: ""
+    },
+
+    {
+        titulo: "CUBAN MODS APK",
+        aviso: "Comprueba que tu dispositivo sea compatible.",
+        dispositivo: "ANDROID",
+        fecha: "16/10/2026",
+        key: "CUBAN-79F144796D22B552",
+
+        enlaceDescarga: "https://www.mediafire.com/file/djdsxn2zslfwdqc/Cuban-Mods-15.0.149-tele.apks/file",
+
+        enlaceKey: "https://cubanmods.com/keygratis",
+
+        // Ejemplo: botón COPY habilitado.
+        enlaceCopy: "CUBAN-79F144796D22B552"
+    },
+
+    {
+        titulo: "HOLOGRAMA GRATIS",
+        aviso: "Revisa las instrucciones antes de instalar.",
+        dispositivo: "ANDROID",
+        fecha: "16/10/2026",
+        key: "KRISSGAMERV1",
+
+        enlaceDescarga: "https://www.mediafire.com/file/yc6njnaqg57pw5g/HOLO_VIP_FF_NORMAL_DE_PLAY_STORE_100%2525_SEGURO_%25F0%2592%25BC%25F0%259F%25A4%258D.zip/file",
+
+        // Sin enlace: GET KEY FREE oculto.
+        enlaceKey: "",
+
+        // Con key: COPY visible.
+        enlaceCopy: "KRISSGAMERV1"
+    }
+
 ];
 
-const contenedor = document.getElementById("downloads");
+const lista = document.getElementById("lista");
+
+function escapar(texto) {
+    return String(texto ?? "").replace(/[&<>"']/g, caracter => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[caracter]);
+}
+
+function crearTarjeta(archivo) {
+    const tarjeta = document.createElement("article");
+    tarjeta.className = "card";
+
+    const titulo = escapar(archivo.titulo);
+    const aviso = escapar(archivo.aviso);
+    const dispositivo = escapar(archivo.dispositivo);
+    const fecha = escapar(archivo.fecha);
+    const key = escapar(archivo.key);
+
+    const enlaceDescarga = escapar(archivo.enlaceDescarga);
+    const enlaceKey = String(archivo.enlaceKey || "").trim();
+    const enlaceCopy = String(archivo.enlaceCopy || "").trim();
+
+    tarjeta.innerHTML = `
+        <div class="estado">● ARCHIVO DISPONIBLE</div>
+
+        <h2 class="titulo">${titulo}</h2>
+
+        <div class="dato">
+            <span class="etiqueta">AVISO</span>
+            <div class="valor aviso">${aviso || "Sin aviso."}</div>
+        </div>
+
+        <div class="dato">
+            <span class="etiqueta">DISPOSITIVO</span>
+            <div class="valor">${dispositivo || "No especificado"}</div>
+        </div>
+
+        <div class="dato">
+            <span class="etiqueta">FECHA</span>
+            <div class="valor">${fecha || "No especificada"}</div>
+        </div>
+
+        <div class="dato">
+            <span class="etiqueta">KEY DE ACCESO</span>
+
+            <div class="key-fila">
+                <div class="key-texto">${key || "No especificada"}</div>
+
+                ${
+                    enlaceCopy
+                    ? `<button class="boton copy" type="button">COPY</button>`
+                    : ""
+                }
+            </div>
+        </div>
+
+        <div class="botones">
+            <a
+                class="boton descargar"
+                href="${enlaceDescarga}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >📥 DOWNLOAD</a>
+
+            ${
+                enlaceKey
+                ? `<a
+                    class="boton getkey"
+                    href="${escapar(enlaceKey)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >🔑 GET KEY FREE</a>`
+                : ""
+            }
+        </div>
+    `;
+
+    const botonCopy = tarjeta.querySelector(".copy");
+
+    if (botonCopy) {
+        botonCopy.addEventListener("click", async () => {
+            // Copia el contenido de enlaceCopy.
+            const textoCopiar = enlaceCopy;
+
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(textoCopiar);
+                } else {
+                    const temporal = document.createElement("textarea");
+                    temporal.value = textoCopiar;
+                    temporal.style.position = "fixed";
+                    temporal.style.opacity = "0";
+                    document.body.appendChild(temporal);
+                    temporal.select();
+
+                    const copiado = document.execCommand("copy");
+                    temporal.remove();
+
+                    if (!copiado) {
+                        throw new Error("No se pudo copiar");
+                    }
+                }
+
+                botonCopy.textContent = "COPIADO ✓";
+                setTimeout(() => {
+                    botonCopy.textContent = "COPY";
+                }, 1500);
+
+            } catch (error) {
+                botonCopy.textContent = "NO SE PUDO COPIAR";
+                setTimeout(() => {
+                    botonCopy.textContent = "COPY";
+                }, 1800);
+            }
+        });
+    }
+
+    return tarjeta;
+}
 
 archivos.forEach(archivo => {
-  const tarjeta = document.createElement("section");
-  tarjeta.className = "card";
-
-  const etiqueta = document.createElement("div");
-  etiqueta.className = "tag";
-  etiqueta.textContent = "● ARCHIVO DISPONIBLE";
-
-  const titulo = document.createElement("h1");
-  titulo.className = "file-title";
-  titulo.textContent = archivo.nombre;
-
-  function crearInfo(nombre, valor, clase = "value") {
-    const info = document.createElement("div");
-    info.className = "info";
-
-    const textoEtiqueta = document.createElement("div");
-    textoEtiqueta.className = "label";
-    textoEtiqueta.textContent = nombre;
-
-    const texto = document.createElement("div");
-    texto.className = clase;
-    texto.textContent = valor;
-
-    info.append(textoEtiqueta, texto);
-    return info;
-  }
-
-  const botonDescarga = document.createElement("a");
-  botonDescarga.className = "download";
-  botonDescarga.textContent = "📥 DOWNLOAD";
-  botonDescarga.href = archivo.enlace;
-  botonDescarga.target = "_blank";
-  botonDescarga.rel = "noopener noreferrer";
-
-  tarjeta.append(
-    etiqueta,
-    titulo,
-    crearInfo("FECHA:", archivo.fecha),
-    crearInfo("KEY DE ACCESO:", archivo.key, "value key"),
-    botonDescarga
-  );
-
-  if (archivo.enlaceKey) {
-    const botonKey = document.createElement("a");
-    botonKey.className = "download get-key";
-    botonKey.textContent = "🔑 GET KEY FREE";
-    botonKey.href = archivo.enlaceKey;
-    botonKey.target = "_blank";
-    botonKey.rel = "noopener noreferrer";
-
-    tarjeta.appendChild(botonKey);
-  }
-
-  contenedor.appendChild(tarjeta);
+    lista.appendChild(crearTarjeta(archivo));
 });
 </script>
 
